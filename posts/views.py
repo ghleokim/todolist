@@ -14,9 +14,9 @@ def index(request):
 
 def create(request):
     if request.method == 'POST':
-        title = request.POST.get('schedule')
+        schedule = request.POST.get('schedule')
         due_date = request.POST.get('due-date')
-        Post.objects.create(title=title, due_date=due_date)
+        Post.objects.create(schedule=schedule, due_date=due_date)
         return redirect('posts:index')
     else:
         return render(request, 'posts/create.html')

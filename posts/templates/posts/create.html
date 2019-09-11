@@ -1,11 +1,30 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h5>add new schedule</h5>
-<form action="{% url 'posts:create' %}" method="post">
-  {% csrf_token %}
+<div class="text-center mt-3">
+    <h2>새 할일 추가하기</h2>
+    </div>
+<!-- <form action="{% url 'posts:create' %}" method="post">
+  
   <input type="text" name="schedule">
-  <input type="date" name="due-date">
+
+  
+  <input type="date" name="due-date" value="2019-09-11">
   <button type="submit">submit</button>
-</form>
+</form> -->
+<form action="{% url 'posts:create' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="formGroupExampleInput">할 일</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="할 일">
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">마감 기한</label>
+      <!-- 이거 views에서 오늘날짜로 value 넘겨주세요 -->
+      <input type="date" class="form-control" id="formGroupExampleInput2" value="2019-09-11">
+    </div>
+    <div class="text-right">
+    <button type="submit" >추가하기</button>
+  </div>
+  </form>
 {% endblock %}
