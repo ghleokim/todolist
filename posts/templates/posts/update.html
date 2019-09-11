@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="container">
+  <div class="text-center mt-3">
+    <h2>할 일 편집하기</h2>
+  </div>
 
-<div class="text-center mt-3">
-  <h2>할 일 편집하기</h2>
+  <form action="{% url 'posts:update' post.id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="formGroupExampleInput">할 일</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" value="{{ post.schedule }}" name="schedule">
+    </div>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">마감 기한</label>
+      <input type="date" class="form-control" id="formGroupExampleInput2" value="{{ post.due_date|date:'Y-m-d' }}"
+        name="due-date">
+    </div>
+    <div class="text-right fixed-bottom mx-1">
+        <button type="submit" class="btn btn-outline-primary btn-lg btn-block mb-3">수정하기</button>
+      </div>
+  </form>
 </div>
-
-<form action="{% url 'posts:update' post.id %}" method="post">
-  {% csrf_token %}
-  <div class="form-group">
-    <label for="formGroupExampleInput">할 일</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" value="{{ post.schedule }}" name="schedule">
-  </div>
-  <div class="form-group">
-    <label for="formGroupExampleInput2">마감 기한</label>
-    <input type="date" class="form-control" id="formGroupExampleInput2" value="{{ post.due_date|date:'Y-m-d' }}"
-      name="due-date">
-  </div>
-  <div class="text-right">
-    <button type="submit" clss="btn btn-outline-primary">수정하기</button>
-  </div>
-</form>
 {% endblock %}
