@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h5>edit schedule</h5>
+<form action="{% url 'posts:update' post.id %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="schedule" value="{{ post.schedule }}">
+  <input type="date" name="due-date" value="{{ post.due_date|date:'Y-m-d' }}">
+  <button type="submit">submit</button>
+</form>
+{% endblock %}

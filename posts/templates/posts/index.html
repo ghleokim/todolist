@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h5>main page</h5>
+
+{% for post in posts %}
+
+<li>{{ post.schedule }} | {{ post.due_date }}
+  <a href="{% url 'posts:update' post.id %}"><button>edit</button></a>
+  <a href="{% url 'posts:delete' post.id %}"><button>delete</button></a>
+</li>
+
+{% endfor %}
+
+{% endblock %}

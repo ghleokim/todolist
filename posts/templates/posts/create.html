@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h5>add new schedule</h5>
+<form action="{% url 'posts:create' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="schedule">
+  <input type="date" name="due-date">
+  <button type="submit">submit</button>
+</form>
+{% endblock %}
